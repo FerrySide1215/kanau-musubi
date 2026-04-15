@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>守護石ミニ診断シート</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&display=swap');
+  @page { size: A4; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Noto Serif JP', serif;
+    background: #0a0a10;
+    color: #e0ddd5;
+  }
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 18mm 16mm;
+    background: #0a0a10;
+    position: relative;
+    page-break-after: always;
+    overflow: hidden;
+  }
+  .page:last-child { page-break-after: auto; }
+  .bg-glow {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 30% 20%, rgba(201,168,76,0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 80%, rgba(123,94,167,0.06) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .corner { position: absolute; width: 20px; height: 20px; }
+  .corner::before, .corner::after { content: ''; position: absolute; background: #c9a84c; }
+  .corner::before { width: 100%; height: 1px; top: 0; left: 0; }
+  .corner::after  { width: 1px; height: 100%; top: 0; left: 0; }
+  .tl { top: 10mm; left: 10mm; }
+  .tr { top: 10mm; right: 10mm; transform: scaleX(-1); }
+  .bl { bottom: 10mm; left: 10mm; transform: scaleY(-1); }
+  .br { bottom: 10mm; right: 10mm; transform: scale(-1); }
+
+  .content { position: relative; z-index: 1; }
+
+  /* ── Cover ── */
+  .cover { text-align: center; padding-top: 20mm; }
+  .cover-label {
+    font-size: 10pt;
+    letter-spacing: 0.5em;
+    color: #c9a84c;
+    margin-bottom: 12mm;
+  }
+  .cover-icon {
+    font-size: 60pt;
+    margin-bottom: 8mm;
+    filter: drop-shadow(0 0 20px rgba(201,168,76,0.4));
+  }
+  .cover-title {
+    font-size: 28pt;
+    color: #c9a84c;
+    letter-spacing: 0.2em;
+    margin-bottom: 4mm;
+    font-weight: 700;
+  }
+  .cover-sub {
+    font-size: 11pt;
+    color: #8a8680;
+    letter-spacing: 0.15em;
+    margin-bottom: 20mm;
+    line-height: 1.8;
+  }
+  .cover-intro {
+    font-size: 10pt;
+    color: #e0ddd5;
+    line-height: 2;
+    letter-spacing: 0.05em;
+    max-width: 140mm;
+    margin: 0 auto 20mm;
+    text-align: left;
+  }
+  .cover-divider {
+    width: 40mm;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #c9a84c, transparent);
+    margin: 15mm auto;
+  }
+  .cover-brand {
+    font-size: 9pt;
+    color: rgba(201,168,76,0.6);
+    letter-spacing: 0.3em;
+    margin-top: 8mm;
+  }
+
+  /* ── Chart ── */
+  .page-title {
+    font-size: 18pt;
+    color: #c9a84c;
+    text-align: center;
+    letter-spacing: 0.15em;
+    margin-bottom: 3mm;
+    font-weight: 700;
+  }
+  .page-subtitle {
+    font-size: 9pt;
+    color: #8a8680;
+    text-align: center;
+    letter-spacing: 0.1em;
+    margin-bottom: 10mm;
+  }
+  .stones-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4mm;
+  }
+  .stone-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 3mm;
+    padding: 4mm 5mm;
+    display: flex;
+    gap: 3mm;
+    align-items: flex-start;
+  }
+  .stone-month {
+    font-size: 14pt;
+    color: #c9a84c;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    min-width: 18mm;
+    padding-top: 1mm;
+  }
+  .stone-body { flex: 1; }
+  .stone-name {
+    font-size: 11pt;
+    color: #e0ddd5;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin-bottom: 1mm;
+  }
+  .stone-keyword {
+    font-size: 8pt;
+    color: #9b6bb5;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5mm;
+  }
+  .stone-desc {
+    font-size: 8pt;
+    color: #8a8680;
+    line-height: 1.6;
+    letter-spacing: 0.02em;
+  }
+
+  /* ── CTA Page ── */
+  .cta-section { text-align: center; padding-top: 20mm; }
+  .cta-title {
+    font-size: 20pt;
+    color: #c9a84c;
+    letter-spacing: 0.15em;
+    margin-bottom: 6mm;
+    font-weight: 700;
+  }
+  .cta-intro {
+    font-size: 10pt;
+    line-height: 2;
+    color: #e0ddd5;
+    margin-bottom: 15mm;
+    max-width: 140mm;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .pathway {
+    display: flex;
+    flex-direction: column;
+    gap: 6mm;
+    max-width: 150mm;
+    margin: 0 auto 15mm;
+  }
+  .path-item {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 3mm;
+    padding: 5mm;
+    text-align: left;
+    display: flex;
+    gap: 4mm;
+    align-items: center;
+  }
+  .path-item.featured {
+    background: rgba(123,94,167,0.08);
+    border-color: rgba(123,94,167,0.3);
+  }
+  .path-num {
+    font-size: 20pt;
+    color: #c9a84c;
+    font-weight: 700;
+    min-width: 10mm;
+  }
+  .path-body { flex: 1; }
+  .path-title {
+    font-size: 12pt;
+    color: #c9a84c;
+    letter-spacing: 0.1em;
+    margin-bottom: 1mm;
+    font-weight: 700;
+  }
+  .path-title .price {
+    font-size: 9pt;
+    color: #8a8680;
+    margin-left: 3mm;
+    font-weight: 400;
+  }
+  .path-desc {
+    font-size: 8.5pt;
+    color: #8a8680;
+    line-height: 1.6;
+    margin-bottom: 1mm;
+  }
+  .path-url {
+    font-size: 8pt;
+    color: #9b6bb5;
+    letter-spacing: 0.05em;
+  }
+
+  .closing {
+    margin-top: 12mm;
+    padding: 6mm;
+    background: rgba(201,168,76,0.05);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 3mm;
+    max-width: 150mm;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .closing p {
+    font-size: 9pt;
+    line-height: 2;
+    color: #e0ddd5;
+    text-align: center;
+    letter-spacing: 0.05em;
+  }
+  .closing .signature {
+    margin-top: 4mm;
+    color: #c9a84c;
+    letter-spacing: 0.2em;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+
+<!-- ── COVER / Page 1 ── -->
+<div class="page">
+  <div class="bg-glow"></div>
+  <div class="corner tl"></div><div class="corner tr"></div>
+  <div class="corner bl"></div><div class="corner br"></div>
+  <div class="content">
+    <div class="cover">
+      <p class="cover-label">S P I R I T U A L　G I F T</p>
+      <div class="cover-icon">🐉</div>
+      <h1 class="cover-title">守護石ミニ診断シート</h1>
+      <p class="cover-sub">あなたの生まれ月が示す、本質と石</p>
+
+      <div class="cover-divider"></div>
+
+      <p class="cover-intro">
+        パワーストーンは、ただのアクセサリーではありません。<br />
+        あなたの魂が生まれ持つ波長と、石が持つ固有のエネルギー。<br />
+        その「共鳴」が、人生を静かに整えていきます。
+        <br /><br />
+        このシートでは、生まれ月に宿る本質と<br />
+        その月に最も共鳴する守護石をお伝えします。<br />
+        まずは、あなたの生まれ月のページをご覧ください。
+      </p>
+
+      <div class="cover-divider"></div>
+
+      <p class="cover-brand">叶結 — kanau musubi</p>
+    </div>
+  </div>
+</div>
+
+<!-- ── CHART / Page 2 ── -->
+<div class="page">
+  <div class="bg-glow"></div>
+  <div class="corner tl"></div><div class="corner tr"></div>
+  <div class="corner bl"></div><div class="corner br"></div>
+  <div class="content">
+    <h2 class="page-title">12ヶ月 × 守護石 早見表</h2>
+    <p class="page-subtitle">G U A R D I A N　S T O N E　O F　T H E　M O N T H</p>
+
+    <div class="stones-grid">
+      <div class="stone-card">
+        <div class="stone-month">1月</div>
+        <div class="stone-body">
+          <div class="stone-name">ガーネット</div>
+          <div class="stone-keyword">情熱 × 実行力</div>
+          <div class="stone-desc">冬の大地を燃やす炎。意志を現実化する力を宿す。</div>
+        </div>
+      </div>
+      <div class="stone-card">
+        <div class="stone-month">2月</div>
+        <div class="stone-body">
+          <div class="stone-name">アメジスト</div>
+          <div class="stone-keyword">直感 × 浄化</div>
+          <div class="stone-desc">深い紫の智慧。精神を澄ませ、真実を見抜く。</div>
+        </div>
+      </div>
+      <div class="stone-card">
+        <div class="stone-month">3月</div>
+        <div class="stone-body">
+          <div class="stone-name">アクアマリン</div>
+          <div class="stone-keyword">流れ × 調和</div>
+          <div class="stone-desc">海の叡智。滞りを溶かし、本音へと導く。</div>
+        </div>
+      </div>
+      <div class="stone-card">
+        <div class="stone-month">4月</div>
+        <div class="stone-body">
+          <div class="stone-name">水晶（クリスタル）</div>
+          <div class="stone-keyword">純粋 × 増幅</div>
+          <div class="stone-desc">全ての基本。意図を増幅し、道を照らす光。</div>
+        </div>
+      </div>
+      <div class="stone-card">
+        <div class="stone-month">5月</div>
+        <div class="stone-body">
+          <div class="stone-name">エメラルド</div>
+          <div class="stone-keyword">愛 × 成長</div>
+          <div class="stone-desc">新緑の生命力。愛を育み、関係を深める力。</div>
+        </div>
+      </div>
+      <div class="stone-card">
+        <div class="stone-month">6月</div>
+        <div class="stone-body">
+          <div class="stone-name">ムーンストーン</div>
+          <div class="stone-keyword">女性性 × 感性</div>
+          <div class="stone-desc">月の叡智。直感と感受性を研ぎ澄ます。</div>
+        </div>
+      </div>
+      <div class="stone-card">
+        <div class="stone-month">7月</div>
+        <div class="stone-body">
+          <div class="stone-name">ルビー</div>
+          <div class="stone-keyword">生命力 × 魅力</div>
+          <div class="stone-desc">真紅の太陽。存在の輝きを最大化する力。</div>
+        </div>
+      </div>
+      <div class="stone-card">
+        <div class="stone-month">8月</div>
+        <div class="stone-body">
+          <div class="stone-name">ペリドット</div>
+          <div class="stone-keyword">希望 × 再生</div>
+          <div class="stone-desc">夜の太陽石。闇の中にも光を見出す強さ。</div>
+        </div>
+      </div>
+      <div class="stone-card">
+        <div class="stone-month">9月</div>
+        <div class="stone-body">
+          <div class="stone-name">サファイア</div>
+          <div class="stone-keyword">知性 × 誠実</div>
+          <div class="stone-desc">深い青の叡智。真実と信念を貫く力。</div>
+        </div>
+      </div>
+      <div class="stone-card">
+        <div class="stone-month">10月</div>
+        <div class="stone-body">
+          <div class="stone-name">オパール</div>
+          <div class="stone-keyword">創造 × 変容</div>
+          <div class="stone-desc">七色の虹。眠る才能を引き出し、花開かせる。</div>
+        </div>
+      </div>
+      <div class="stone-card">
+        <div class="stone-month">11月</div>
+        <div class="stone-body">
+          <div class="stone-name">シトリン</div>
+          <div class="stone-keyword">豊穣 × 金運</div>
+          <div class="stone-desc">黄金の光。豊かさの流れを呼び込む太陽石。</div>
+        </div>
+      </div>
+      <div class="stone-card">
+        <div class="stone-month">12月</div>
+        <div class="stone-body">
+          <div class="stone-name">ターコイズ</div>
+          <div class="stone-keyword">守護 × 旅立ち</div>
+          <div class="stone-desc">天空の石。持ち主を守り、新しい道へ導く。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── CTA / Page 3 ── -->
+<div class="page">
+  <div class="bg-glow"></div>
+  <div class="corner tl"></div><div class="corner tr"></div>
+  <div class="corner bl"></div><div class="corner br"></div>
+  <div class="content">
+    <div class="cta-section">
+      <h2 class="cta-title">もっと深く自分を知るには</h2>
+      <p class="cta-intro">
+        この早見表は、あなたの本質のほんの入口です。<br />
+        本当の守護石は、生まれ月だけでなく<br />
+        今抱えている課題・生きる時代のエネルギーとの組み合わせで変わります。
+      </p>
+
+      <div class="pathway">
+        <div class="path-item">
+          <div class="path-num">01</div>
+          <div class="path-body">
+            <p class="path-title">龍の書 <span class="price">完全無料</span></p>
+            <p class="path-desc">名前・生まれ月・今の悩みから、あなただけの守護石と守護龍を鑑定します。所要時間1分。</p>
+            <p class="path-url">→ ferryside1215.github.io/ryu-no-sho</p>
+          </div>
+        </div>
+
+        <div class="path-item featured">
+          <div class="path-num">02</div>
+          <div class="path-body">
+            <p class="path-title">叶結 — 総合鑑定 <span class="price">¥30,000〜</span></p>
+            <p class="path-desc">四柱推命・数秘術・算命学・パワーストーン・タイムウェーバーを統合した、完全オーダーメイドの本格鑑定。</p>
+            <p class="path-url">→ Instagram @kanau_musubi</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="closing">
+        <p>
+          このシートを受け取ってくださり、ありがとうございます。<br />
+          あなたに宿る光が、今日も静かに輝いていますように。
+        </p>
+        <p class="signature">叶 結 — kanau musubi</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

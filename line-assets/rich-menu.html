@@ -1,0 +1,67 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  width:2500px;height:1686px;
+  background:#080810;
+  font-family:'Noto Serif JP',serif;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  grid-template-rows:repeat(2,1fr);
+  gap:2px;
+  overflow:hidden;
+  position:relative;
+}
+body::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(ellipse at 30% 40%,rgba(201,168,76,0.08) 0%,transparent 50%),
+    radial-gradient(ellipse at 70% 60%,rgba(123,94,167,0.06) 0%,transparent 50%);
+  pointer-events:none;
+  z-index:0;
+}
+.cell{
+  background:#0f0f1a;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:60px;
+  text-align:center;
+  position:relative;
+  z-index:1;
+  border:1px solid rgba(201,168,76,0.15);
+}
+.cell .icon{
+  font-size:200px;
+  margin-bottom:40px;
+  line-height:1;
+}
+.cell .label{
+  font-size:82px;
+  color:#c9a84c;
+  letter-spacing:0.15em;
+  font-weight:700;
+  margin-bottom:16px;
+}
+.cell .sub{
+  font-size:42px;
+  color:#8a8680;
+  letter-spacing:0.1em;
+  font-weight:400;
+}
+.cell.featured{
+  background:linear-gradient(135deg,#1a1528,#0f0f1a);
+}
+.cell.featured .label{color:#e8d5a3}
+</style></head><body>
+<div class="cell"><div class="icon">🔮</div><div class="label">無料鑑定</div><div class="sub">龍の書</div></div>
+<div class="cell featured"><div class="icon">💎</div><div class="label">有料鑑定</div><div class="sub">叶結び</div></div>
+<div class="cell"><div class="icon">🌙</div><div class="label">ミニ診断</div><div class="sub">特典プレゼント</div></div>
+<div class="cell"><div class="icon">📖</div><div class="label">記事を読む</div><div class="sub">note</div></div>
+<div class="cell"><div class="icon">💬</div><div class="label">お問合せ</div><div class="sub">質問はこちら</div></div>
+<div class="cell"><div class="icon">✨</div><div class="label">Instagram</div><div class="sub">@kanau_musubi</div></div>
+</body></html>

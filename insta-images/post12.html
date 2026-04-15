@@ -1,0 +1,21 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1080px;background:#080810;font-family:'Noto Serif JP',serif;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,rgba(232,160,176,0.08) 0%,transparent 55%)}
+.corner{position:absolute;width:40px;height:40px}.corner::before,.corner::after{content:'';position:absolute;background:#c9a84c}.corner::before{width:100%;height:1px;top:0;left:0}.corner::after{width:1px;height:100%;top:0;left:0}
+.tl{top:32px;left:32px}.tr{top:32px;right:32px;transform:scaleX(-1)}.bl{bottom:32px;left:32px;transform:scaleY(-1)}.br{bottom:32px;right:32px;transform:scale(-1)}
+.c{position:relative;z-index:1;text-align:center;padding:0 80px}
+.title{font-size:40px;color:#c9a84c;letter-spacing:0.12em;line-height:1.7;margin-bottom:48px;font-weight:700}
+.msg{font-size:26px;color:#e0ddd5;line-height:1.9;margin-bottom:48px}
+.msg span{color:#e8a0b0}
+.brand{font-size:13px;color:rgba(201,168,76,0.5);letter-spacing:0.3em}
+</style></head><body>
+<div class="bg"></div>
+<div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+<div class="c">
+  <h1 class="title">本当の自分を知るのが<br>怖いのは<br>当然のこと</h1>
+  <p class="msg">怖いと感じるのは<br><span>本気で向き合おうとしている</span><br>証拠です。<br><br>知った後の方が<br>知らないままより、<br>ずっと楽になります。</p>
+  <p class="brand">叶結 — kanau musubi</p>
+</div></body></html>

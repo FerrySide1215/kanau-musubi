@@ -1,0 +1,28 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1080px;background:#080810;font-family:'Noto Serif JP',serif;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 35%,rgba(201,168,76,0.1) 0%,transparent 60%)}
+.corner{position:absolute;width:40px;height:40px}.corner::before,.corner::after{content:'';position:absolute;background:#c9a84c}.corner::before{width:100%;height:1px;top:0;left:0}.corner::after{width:1px;height:100%;top:0;left:0}
+.tl{top:32px;left:32px}.tr{top:32px;right:32px;transform:scaleX(-1)}.bl{bottom:32px;left:32px;transform:scaleY(-1)}.br{bottom:32px;right:32px;transform:scale(-1)}
+.c{position:relative;z-index:1;text-align:center;padding:0 80px}
+.label{font-size:14px;color:#c9a84c;letter-spacing:0.5em;margin-bottom:32px}
+.icon{font-size:110px;margin-bottom:32px;filter:drop-shadow(0 0 40px rgba(201,168,76,0.6))}
+.title{font-size:54px;color:#c9a84c;letter-spacing:0.15em;line-height:1.5;margin-bottom:32px;font-weight:700}
+.title .big{font-size:80px;color:#e0ddd5}
+.sub{font-size:18px;color:#8a8680;letter-spacing:0.2em;margin-bottom:48px}
+.swipe{font-size:13px;color:#c9a84c;letter-spacing:0.3em;animation:pulse 2s infinite}
+@keyframes pulse{50%{opacity:0.5}}
+.brand{font-size:12px;color:rgba(201,168,76,0.4);letter-spacing:0.3em;margin-top:16px}
+</style></head><body>
+<div class="bg"></div>
+<div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+<div class="c">
+  <p class="label">YOUR INTUITION</p>
+  <div class="icon">✨</div>
+  <h1 class="title">直感が冴えている時の<br><span class="big">サイン 5つ</span></h1>
+  <p class="sub">あなたはいくつ当てはまる？</p>
+  <p class="swipe">SWIPE →</p>
+  <p class="brand">叶結 — kanau musubi</p>
+</div></body></html>

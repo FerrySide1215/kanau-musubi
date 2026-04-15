@@ -1,0 +1,29 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1080px;background:#080810;font-family:'Noto Serif JP',serif;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,rgba(201,168,76,0.08) 0%,transparent 60%)}
+.corner{position:absolute;width:40px;height:40px}.corner::before,.corner::after{content:'';position:absolute;background:#c9a84c}.corner::before{width:100%;height:1px;top:0;left:0}.corner::after{width:1px;height:100%;top:0;left:0}
+.tl{top:32px;left:32px}.tr{top:32px;right:32px;transform:scaleX(-1)}.bl{bottom:32px;left:32px;transform:scaleY(-1)}.br{bottom:32px;right:32px;transform:scale(-1)}
+.c{position:relative;z-index:1;text-align:center;padding:0 80px}
+.icon{font-size:80px;margin-bottom:32px}
+.title{font-size:38px;color:#c9a84c;letter-spacing:0.12em;line-height:1.6;margin-bottom:40px;font-weight:700}
+.items{display:flex;flex-direction:column;gap:24px;text-align:left;margin-bottom:40px}
+.item{display:flex;gap:16px;align-items:flex-start}
+.num{font-size:32px;color:#c9a84c;font-weight:700;line-height:1}
+.item-text{font-size:22px;color:#e0ddd5;line-height:1.6}
+.brand{font-size:13px;color:rgba(201,168,76,0.5);letter-spacing:0.3em}
+</style></head><body>
+<div class="bg"></div>
+<div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+<div class="c">
+  <div class="icon">💎</div>
+  <h1 class="title">パワーストーンを選ぶ前に<br>知ってほしい3つのこと</h1>
+  <div class="items">
+    <div class="item"><span class="num">1</span><span class="item-text">見た目で選ばない</span></div>
+    <div class="item"><span class="num">2</span><span class="item-text">万能な石は存在しない</span></div>
+    <div class="item"><span class="num">3</span><span class="item-text">石は「共鳴するもの」</span></div>
+  </div>
+  <p class="brand">叶結 — kanau musubi</p>
+</div></body></html>

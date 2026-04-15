@@ -1,0 +1,28 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1080px;background:#080810;font-family:'Noto Serif JP',serif;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,rgba(123,94,167,0.12) 0%,transparent 60%)}
+.corner{position:absolute;width:40px;height:40px}.corner::before,.corner::after{content:'';position:absolute;background:#c9a84c}.corner::before{width:100%;height:1px;top:0;left:0}.corner::after{width:1px;height:100%;top:0;left:0}
+.tl{top:32px;left:32px}.tr{top:32px;right:32px;transform:scaleX(-1)}.bl{bottom:32px;left:32px;transform:scaleY(-1)}.br{bottom:32px;right:32px;transform:scale(-1)}
+.c{position:relative;z-index:1;text-align:center;padding:0 80px}
+.label{font-size:13px;color:#9b6bb5;letter-spacing:0.4em;margin-bottom:32px}
+.title{font-size:38px;color:#c9a84c;letter-spacing:0.1em;line-height:1.6;margin-bottom:40px;font-weight:700}
+.msg{font-size:22px;color:#e0ddd5;line-height:2;margin-bottom:40px}
+.msg em{color:#9b6bb5;font-style:normal}
+.final{font-size:18px;color:#8a8680;line-height:1.9;margin-bottom:32px}
+.cta{display:inline-block;padding:16px 40px;border:1px solid #c9a84c;color:#c9a84c;font-size:14px;letter-spacing:0.2em;margin-top:8px}
+.pager{position:absolute;bottom:48px;left:0;right:0;display:flex;justify-content:center;font-size:11px;color:rgba(201,168,76,0.4);letter-spacing:0.2em}
+</style></head><body>
+<div class="bg"></div>
+<div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+<div class="c">
+  <p class="label">MESSAGE</p>
+  <h1 class="title">3つ同時に起きている時<br>あなたは<br>動き出す直前にいる</h1>
+  <p class="msg">怖がらなくて大丈夫。<br><em>古いものが壊れないと<br>新しいものは入ってこれない。</em></p>
+  <p class="final">今この投稿を見ているあなたは<br>もう変化の渦中にいるかもしれません。</p>
+  <div class="cta">詳しい鑑定は → @kanau_musubi</div>
+</div>
+<div class="pager">4 / 4</div>
+</body></html>

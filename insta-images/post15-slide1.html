@@ -1,0 +1,27 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1080px;background:#080810;font-family:'Noto Serif JP',serif;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(123,94,167,0.1) 0%,transparent 60%)}
+.corner{position:absolute;width:40px;height:40px}.corner::before,.corner::after{content:'';position:absolute;background:#c9a84c}.corner::before{width:100%;height:1px;top:0;left:0}.corner::after{width:1px;height:100%;top:0;left:0}
+.tl{top:32px;left:32px}.tr{top:32px;right:32px;transform:scaleX(-1)}.bl{bottom:32px;left:32px;transform:scaleY(-1)}.br{bottom:32px;right:32px;transform:scale(-1)}
+.c{position:relative;z-index:1;text-align:center;padding:0 100px}
+.num{font-size:180px;color:#9b6bb5;line-height:1;margin-bottom:24px;font-weight:700;letter-spacing:-0.05em}
+.num small{font-size:40px;vertical-align:top;margin-right:8px;color:#8a8680}
+.divider{width:80px;height:1px;background:linear-gradient(90deg,transparent,#9b6bb5,transparent);margin:0 auto 40px}
+.title{font-size:42px;color:#c9a84c;letter-spacing:0.1em;line-height:1.5;margin-bottom:32px;font-weight:700}
+.desc{font-size:20px;color:#e0ddd5;line-height:2;margin-bottom:24px}
+.desc em{color:#9b6bb5;font-style:normal}
+.pager{position:absolute;bottom:48px;left:0;right:0;display:flex;justify-content:center;font-size:11px;color:rgba(201,168,76,0.4);letter-spacing:0.2em}
+</style></head><body>
+<div class="bg"></div>
+<div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+<div class="c">
+  <div class="num"><small>No.</small>1</div>
+  <div class="divider"></div>
+  <h1 class="title">今までの人間関係が<br>崩れる</h1>
+  <p class="desc">急に疎遠になる人が出てくる。<br>それは<em>次のステージに必要ない縁</em>が<br>自然と離れていく現象。</p>
+</div>
+<div class="pager">1 / 4</div>
+</body></html>
